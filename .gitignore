@@ -1,1 +1,6 @@
 /test_code
+
+/venv
+
+*.csv
+__pycache__
