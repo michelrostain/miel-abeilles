@@ -30,6 +30,12 @@ Dans la mise en pratique informatique de la théorie de l'évolution, plusieurs 
 
 <u>Sélection :</u> déterminer quels individus sont les plus enclins à obtenir les meilleurs résultats.    
 
-**<u>Les techniques de séletion :</u>**     
+**<u>Les techniques de sélection :</u>**      
+<u>Sélection par rang :</u> consiste à conserver K individus qui possèdent les meilleurs scores.    
 
+<u>Sélection proportionnelle à l'adaptation :</u> Roue de la fortune biaisée : les meilleurs éléments ont une part plus importante sur la roue.    
+
+<u>Sélection par tournoi :</u> Sélection proportionnelle sur des paires d'individus qui a le meilleur rôle.      
+
+<u>Sélection uniforme :</u> sélection aléatoire de manière uniforme sans interventionde la valeur d'adaptation. Probabilité de sélection : 1/p (p = nombre d'individus).     
 
