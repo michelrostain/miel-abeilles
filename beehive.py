@@ -74,29 +74,29 @@ class Beehive:
        
         print(f"La distance moyenne est de {avrg_dist}")
 
-# class Gen_evo:
+class Gen_evo:
 
-#     # Tri par rang, on garde les 10 meilleures.
-#     # def selection(self, bees: list[tuple], list_of_dist: list) -> list[tuple]:
-#     #     n = len(list_of_dist)
+    # Tri par rang, on garde les 10 meilleures.
+    # def selection(self, bees: list[tuple], list_of_dist: list) -> list[tuple]:
+    #     n = len(list_of_dist)
 
-#     #     for i in range(n):
-#     #         for j in range(0, n - i - 1):
-#     #             if list_of_dist[j] > list_of_dist[j + 1]:
-#     #                 list_of_dist[j], list_of_dist[j + 1] = list_of_dist[j + 1], list_of_dist[j]
-#     #                 bees[j], bees[j + 1] = bees[j + 1], bees[j]
+    #     for i in range(n):
+    #         for j in range(0, n - i - 1):
+    #             if list_of_dist[j] > list_of_dist[j + 1]:
+    #                 list_of_dist[j], list_of_dist[j + 1] = list_of_dist[j + 1], list_of_dist[j]
+    #                 bees[j], bees[j + 1] = bees[j + 1], bees[j]
 
-#     #     print(list_of_dist[:10])
-#     #     return bees[:10]
+    #     print(list_of_dist[:10])
+    #     return bees[:10]
 
-#     def selection (self, list_of_dist, bees, nb_survivants):
-#         pair = list(zip(list_of_dist, bees))
-#         pair.sort(key=lambda p: p[0])
-#         return [bee for dist, bee in pair[:nb_survivants]]
+    def selection (self, list_of_dist, bees, nb_survivants):
+        pair = list(zip(list_of_dist, bees))
+        pair.sort(key=lambda p: p[0])
+        return [bee for dist, bee in pair[:nb_survivants]]
 
-#     def crossover(self):
-#         pass
+    def crossover(self):
+        pass
 
-#     def mutations(self):
-#         pass
+    def mutations(self):
+        pass
 
