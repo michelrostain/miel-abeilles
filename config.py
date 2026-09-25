@@ -1,3 +1,5 @@
-NB_BEES =13
+NB_BEES =2
 
 FLOWERS_PATH = "fleurs.csv"
+
+BEEHIVE_POSITION = (500, 500)

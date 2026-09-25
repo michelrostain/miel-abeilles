@@ -1,13 +1,12 @@
 import csv
 from config import FLOWERS_PATH
 
-from beehive import Beehive,Gen_evo
+from beehive import Beehive
 
 def load_data(path:str)->list[tuple]:
     '''
     @parametre _
     '''
-    print("Hello")
     flowers = []
     with open(path, newline="") as f:
         reader = csv.reader(f)
@@ -24,8 +23,8 @@ def main():
     bees = b.init_bees()
     list_dist = b.compute_path(bees)
 
-    g = Gen_evo()
-    g.selection(bees,list_dist)
+    # g = Gen_evo()
+    # g.selection(bees,list_dist)
     
     # print(flowers)
     # load_distance_dataframe(flowers)

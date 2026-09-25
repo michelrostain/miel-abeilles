@@ -2,14 +2,13 @@ from random import shuffle
 import copy
 import math
 
-from config import NB_BEES
+from config import NB_BEES, BEEHIVE_POSITION
 
 
 class Beehive:
     
     def __init__(self, flowers):
         self.flowers = flowers
-
 
     def __str__(self):
         return f"beehive has {len(self.flowers)} flowers."
@@ -24,16 +23,20 @@ class Beehive:
         self.bees = []
         for b in range(NB_BEES):
             new_bee:list = self.init_bee()
-            new_bee.insert(0,(500,500))
+            new_bee.insert(0,(BEEHIVE_POSITION))
             # Pour l'insertion de la ruche en fin de liste, pas besoin de "Insert", on garde "append"
-            new_bee.append((500,500))
+            new_bee.append((BEEHIVE_POSITION))
             self.bees.append(new_bee)
         # print(self.bees)
         return self.bees
 
-    
-    def compute_path(self, bee_path:list[list[tuple]]):
+    def  compute_segment(self, p1, p2):
+        dx = p1[0] - p2[0]
+        dy = p1[1] - p2[1]
+        length = (dx + dy)**0,5
+        return length
 
+    def compute_path(self, bee_path:list[list[tuple]]):
         dist_for_each_bee = []
         itertion = 0
 
@@ -46,9 +49,16 @@ class Beehive:
                 distance += gap
                 
             dist_for_each_bee.append(distance)
-            print(f'Total distance for bee_{itertion} = {distance}')
+            print(distance)
+            # print(f'Total distance for bee_{itertion} = {distance}')
         return dist_for_each_bee   
-
+        
+        '''
+        length = 0
+        for i in range(len(path-1)) :
+            length += length + self.compute_segment(path[i], path[i]+1)
+        return length
+        '''
         
 # class Gen_evo:
 
