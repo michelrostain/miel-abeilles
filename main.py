@@ -1,5 +1,5 @@
 import csv
-from config import FLOWERS_PATH
+from config import FLOWERS_PATH, NB_GENERATIONS
 
 from beehive import Beehive
 
@@ -21,7 +21,11 @@ def main():
 
     b = Beehive(flowers)
     bees = b.init_bees()
-    list_dist = b.compute_path(bees)
+
+    for i in range(NB_GENERATIONS):
+        # b.next_generation()
+        print (f"Génération n°{i+1}")
+        b.print_average_distance()
 
     # g = Gen_evo()
     # g.selection(bees,list_dist)

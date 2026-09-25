@@ -31,15 +31,17 @@ class Beehive:
         return self.bees
 
     def  compute_segment(self, p1, p2):
+        print(p1, p2)
         dx = p1[0] - p2[0]
         dy = p1[1] - p2[1]
-        length = (dx + dy)**0,5
+        length = (dx**2 + dy**2)**0.5
         return length
 
-    def compute_path(self, bee_path:list[list[tuple]]):
+    # def compute_path(self, path):
+        
+    def compute_path(self, bee_path:list[list[tuple]])->list:
         dist_for_each_bee = []
         itertion = 0
-
         for bee in bee_path:
             distance = 0
             itertion += 1
@@ -53,13 +55,25 @@ class Beehive:
             # print(f'Total distance for bee_{itertion} = {distance}')
         return dist_for_each_bee   
         
-        '''
-        length = 0
-        for i in range(len(path-1)) :
-            length += length + self.compute_segment(path[i], path[i]+1)
-        return length
-        '''
-        
+        # length = 0
+        # for i in range(len(path)-1) :
+        #     length += self.compute_segment(path[i], path[i+1])
+        # return length
+
+
+    def next_generation(self):
+        pass
+
+    def print_average_distance(self):
+        l=0
+        avrg_dist = 0
+        l = self.compute_path(self.bees)
+        for dist in l:
+            avrg_dist = avrg_dist + dist
+        avrg_dist = avrg_dist/(len(l))
+       
+        print(f"La distance moyenne est de {avrg_dist}")
+
 # class Gen_evo:
 
 #     # Tri par rang, on garde les 10 meilleures.
