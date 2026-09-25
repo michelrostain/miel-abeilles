@@ -1,5 +1,6 @@
 import csv
-import pandas as pd
+from config import FLOWERS_PATH
+
 from beehive import Beehive,Gen_evo
 
 def load_data(path:str)->list[tuple]:
@@ -17,7 +18,7 @@ def load_data(path:str)->list[tuple]:
 
 
 def main():
-    flowers = load_data("fleurs.csv")
+    flowers = load_data(FLOWERS_PATH)
 
     b = Beehive(flowers)
     bees = b.init_bees()
