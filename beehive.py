@@ -1,3 +1,4 @@
+import random
 from random import shuffle
 import copy
 import math
@@ -31,13 +32,12 @@ class Beehive:
         return self.bees
 
     def  compute_segment(self, p1, p2):
-        print(p1, p2)
+        # print(p1, p2)
         dx = p1[0] - p2[0]
         dy = p1[1] - p2[1]
         length = (dx**2 + dy**2)**0.5
         return length
 
-    # def compute_path(self, path):
         
     def compute_path(self, bee_path:list[list[tuple]])->list:
         dist_for_each_bee = []
@@ -51,7 +51,7 @@ class Beehive:
                 distance += gap
                 
             dist_for_each_bee.append(distance)
-            print(distance)
+            # print(distance)
             # print(f'Total distance for bee_{itertion} = {distance}')
         return dist_for_each_bee   
         
@@ -59,10 +59,6 @@ class Beehive:
         # for i in range(len(path)-1) :
         #     length += self.compute_segment(path[i], path[i+1])
         # return length
-
-
-    def next_generation(self):
-        pass
 
     def print_average_distance(self):
         l=0
@@ -92,11 +88,41 @@ class Gen_evo:
     def selection (self, list_of_dist, bees, nb_survivants):
         pair = list(zip(list_of_dist, bees))
         pair.sort(key=lambda p: p[0])
-        return [bee for dist, bee in pair[:nb_survivants]]
+        best_bees = [bee for dist, bee in pair[:nb_survivants]]
+        return best_bees
 
-    def crossover(self):
-        pass
+    def crossover_pair(self, parent1, parent2):
+        p1 = parent1[1:-1]
+        p2 = parent2[1:-1]
+        n = len(p1)
 
-    def mutations(self):
-        pass
+        a, b = sorted(random.sample (range(n),2))
+        child = [None]*n
+        child [a:b+1] = p1[a:b+1]
 
+        choosen_flowers = set(child[a:b+1])
+        left_spaces = [f for f in p2 if f not in choosen_flowers]
+        it=iter(left_spaces)
+        for i in range(n):
+            if child[i] is None : 
+                child[i] = next(it)
+
+        child.insert(0, BEEHIVE_POSITION)
+        child.append(BEEHIVE_POSITION)
+        return child
+
+    def crossover(self, best_bees, total_bees):
+        new_generation = []
+        while len(new_generation)<total_bees:
+            parent1, parent2 = random.sample(best_bees, 2)
+            child = self.crossover_pair(parent1, parent2)
+            new_generation.append(child)
+        return new_generation
+
+    def mutations(self, new_generation, mutation_rate):
+        for bee in new_generation :
+            if random.random() < mutation_rate :
+                n = len(bee)
+                a, b = random.sample(range(1, n-1), 2)
+                bee[a], bee[b] = bee[b], bee[a]
+        return new_generation
