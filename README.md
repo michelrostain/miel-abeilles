@@ -37,5 +37,32 @@ Dans la mise en pratique informatique de la théorie de l'évolution, plusieurs 
 
 <u>Sélection par tournoi :</u> Sélection proportionnelle sur des paires d'individus qui a le meilleur rôle.      
 
-<u>Sélection uniforme :</u> sélection aléatoire de manière uniforme sans interventionde la valeur d'adaptation. Probabilité de sélection : 1/p (p = nombre d'individus).     
+<u>Sélection uniforme :</u> sélection aléatoire de manière uniforme sans intervention de la valeur d'adaptation. Probabilité de sélection : 1/p (p = nombre d'individus).     
+
+
+### **L'algorithme génétique**     
+
+Une algorithme génétique est un algorithme qui permet, d'une génération d'éléments constitué de data à une autre, de faire évoluer les peerformances de résolution de problèmes de grandes envergure. Le but est d'obtenir une solution approchée à un problème d'optimisation lorsqu'il n'existe pas de méthode exacte.    
+
+
+**<u>Application informatique :</u>**      
+
+Il s'agit alors de créer des fonctions ou des méthodes de classes qui représentent les principaux éléments constitutifs de la théorie de l'évolution.     
+
+<u>Population :</u>     
+La population est créée de manière aléatoire et est un ensemble de solutions candidates. Ici nous créeons un population de 100 individus.     
+
+<u>Fonction d'aptitude (Fitness) :</u>     
+c'est la mesure de l'aptitude  d'un individu à résoudre le problème qui nous intéresse. Une valeur est attribué à chaque individu, un classement est effectué en fonction de celle ci.    
+Ici nous attribuons un score à chaque individu, ce score est la somme des distances parcourue, les plus petit scores étant les meilleurs.    
+
+<u>Fonction de sélection :</u>     
+Applique une sélection comme celles décrites plus haut, afin de ne garder que les meilleurs individus pour créer la génération suivante.     
+
+<u>Fonction de croisement (crossover):</u>     
+Création d'un nouvel élément en fonction de deux autres éléments.     
+
+<u>Fonction de mutation :</u>     
+Altération des data d'un élément de manière aléatoire. Dans notre cas, ce sera l'échange des coordonnées de quelques fleurs (au minimum 2).     
+
 

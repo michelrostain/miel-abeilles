@@ -1,6 +1,7 @@
 import csv
 import statistics
 from config import FLOWERS_PATH, NB_GENERATIONS, NB_SURVIVANT, NB_BEES, MUTATION_RATE
+import matplotlib.pyplot as plt 
 
 from beehive import Gen_evo
 from beehive import Beehive
@@ -67,8 +68,6 @@ def benchmark(nb_essais=20):
         resultats.append(main(verbose=False, plot=False))
     print(f"moyenne = {statistics.mean(resultats):.0f}, "
           f"écart-type = {statistics.stdev(resultats):.0f}")
-
-import matplotlib.pyplot as plt  # bibliothèque de graphiques (pip install matplotlib si absente)
 
 
 def plot_avg_history(avg_history):
