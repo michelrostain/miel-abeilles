@@ -95,7 +95,7 @@ class Gen_evo:
         p1 = parent1[1:-1]
         p2 = parent2[1:-1]
         n = len(p1)
-
+ 
         a, b = sorted(random.sample (range(n),2))
         child = [None]*n
         child [a:b+1] = p1[a:b+1]
