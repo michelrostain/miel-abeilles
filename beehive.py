@@ -2,7 +2,6 @@ import random
 from random import shuffle
 import copy
 import math
-
 from config import NB_BEES, BEEHIVE_POSITION
 
 
@@ -47,14 +46,6 @@ class Beehive:
         # print(self.bees)
         return self.bees
 
-    # def  compute_segment(self, p1, p2):
-    #     # print(p1, p2)
-    #     dx = p1[0] - p2[0]
-    #     dy = p1[1] - p2[1]
-    #     length = (dx**2 + dy**2)**0.5
-        # return length
-
-        
     def compute_path(self, bees:list[Bee])->list:
         dist_for_each_bee = []
         itertion = 0
@@ -84,23 +75,10 @@ class Beehive:
         for dist in l:
             avrg_dist = avrg_dist + dist
         avrg_dist = avrg_dist/(len(l))
-       
+
         print(f"La distance moyenne est de {avrg_dist}")
 
 class Gen_evo:
-
-    # Tri par rang, on garde les 10 meilleures.
-    # def selection(self, bees: list[tuple], list_of_dist: list) -> list[tuple]:
-    #     n = len(list_of_dist)
-
-    #     for i in range(n):
-    #         for j in range(0, n - i - 1):
-    #             if list_of_dist[j] > list_of_dist[j + 1]:
-    #                 list_of_dist[j], list_of_dist[j + 1] = list_of_dist[j + 1], list_of_dist[j]
-    #                 bees[j], bees[j + 1] = bees[j + 1], bees[j]
-
-    #     print(list_of_dist[:10])
-    #     return bees[:10]
 
     def selection (self, list_of_dist, bees, nb_survivants):
         pair = list(zip(list_of_dist, bees))
@@ -113,7 +91,7 @@ class Gen_evo:
         p1 = parent1.path[1:-1]
         p2 = parent2.path[1:-1]
         n = len(p1)
- 
+
         a, b = sorted(random.sample (range(n),2))
         child = [None]*n
         child [a:b+1] = p1[a:b+1]
