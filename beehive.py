@@ -19,8 +19,7 @@ class Beehive:
         shuffle(path)
         return path
     
-
-    def init_bees(self)->list[tuple]:
+    def init_bees(self)->list[list[tuple]]:
         self.bees = []
         for b in range(NB_BEES):
             new_bee:list = self.init_bee()
@@ -30,13 +29,6 @@ class Beehive:
             self.bees.append(new_bee)
         # print(self.bees)
         return self.bees
-
-    # def  compute_segment(self, p1, p2):
-    #     # print(p1, p2)
-    #     dx = p1[0] - p2[0]
-    #     dy = p1[1] - p2[1]
-    #     length = (dx**2 + dy**2)**0.5
-        # return length
 
         
     def compute_path(self, bee_path:list[list[tuple]])->list:
