@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import networkx as nx
 import math
 import random
@@ -70,50 +69,6 @@ class Beehive:
         total += self.graph[bee.path[-1]][self.hive_node]["weight"]
 
         return total    
-
-    def plot_best_path(self):
-        route = [self.hive_node] + self.queen.path + [self.hive_node]
-        route_edges = []
-        for i in range(len(route)-1):
-            route_edges.append((route[i], route[i + 1])) 
-        pos = nx.get_node_attributes(self.graph, "pos")  
-
-        nx.draw_networkx_nodes(self.graph, pos, nodelist=range(len(self.flowers)), node_size=50)     
-        nx.draw_networkx_edges(self.graph, pos, edgelist=route_edges, width=1 )
-        nx.draw_networkx_nodes(self.graph, pos, nodelist=[self.hive_node], node_size=150)
-        plt.title("Best bee path")
-        plt.show()
-     
-
-    def plot_genealogy(self):
-        genealogy = nx.DiGraph()
-        visited = set()    
-        
-        def add_ancestors(bee):
-            if bee.bee_id in visited:
-                return
-
-            visited.add(bee.bee_id)
-            genealogy.add_node(bee.bee_id, generation=bee.generation)
-
-            if bee.parents is not None:
-                parent1, parent2 = bee.parents
-                genealogy.add_edge(parent1.bee_id, bee.bee_id)
-                genealogy.add_edge(parent2.bee_id, bee.bee_id)
-                add_ancestors(parent1)
-                add_ancestors(parent2)
-
-
-        add_ancestors(self.queen)
-        print("Genealogy bees:", genealogy.number_of_nodes())
-        print("Genealogy relations:", genealogy.number_of_edges())
-        
-        
-        pos = nx.multipartite_layout(genealogy, subset_key="generation")
-             
-        nx.draw(genealogy, pos, node_size=10, with_labels=False, arrows=True, connectionstyle="arc3,rad=0.15")
-        plt.title("Genealogy of the best bee")
-        plt.show()
 
 
 class Evolution:
@@ -193,16 +148,5 @@ class Evolution:
             self.beehive.bees = best_bees + new_bees 
 
         return queen_distances, mean_distances     
-
-    def plot_evolution(self, queen_distances, mean_distances):
-
-        plt.plot(range(1, len(queen_distances) + 1), queen_distances, label="Queen")
-        plt.plot(range(1, len(mean_distances) + 1), mean_distances, label="Mean")
-        
-        plt.xlabel("Generation")
-        plt.ylabel("Distance")
-        plt.title("Evolution of distances")
-        plt.show() 
-
 
    
