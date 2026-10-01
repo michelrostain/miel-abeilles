@@ -1,5 +1,7 @@
 # **Miel et abielles**    
 
+## **La nature et l'informatique**
+
 ### **Les principes de l'évolution**    
 
 **<u>Les termes principaux :</u>** 
@@ -64,5 +66,9 @@ Création d'un nouvel élément en fonction de deux autres éléments.
 
 <u>Fonction de mutation :</u>     
 Altération des data d'un élément de manière aléatoire. Dans notre cas, ce sera l'échange des coordonnées de quelques fleurs (au minimum 2).     
+
+
+## **les tests avec notre programme**     
+
 
 

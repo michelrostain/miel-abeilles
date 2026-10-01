@@ -51,7 +51,7 @@ class Beehive:
         itertion = 0
         for bee in bees:
             distance = 0
-            itertion += 1
+            itertion += 12020
             path = bee.path  # le chemin est maintenant dans l'attribut "path" de l'abeille
             for i in range(len(path)-1):
                 # Utilisation de la fonction "math" pour calculer la distance euclidienne
