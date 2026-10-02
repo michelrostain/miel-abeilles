@@ -7,7 +7,7 @@ from config import NB_BEES, MUTATION_RATE, TOURNAMENT_SIZE, NB_GENERATIONS, REPR
 
 class Bee:
     next_id = 0
-
+ 
     def __init__(self, path, parents, generation):
         self.bee_id = Bee.next_id
         Bee.next_id += 1
@@ -99,14 +99,14 @@ class Evolution:
 
         return new_bee        
 
-    def mutate(self, bee):
-        if random.random() < MUTATION_RATE:
+    def mutate(self, bee, mutation_rate):
+        if random.random() < mutation_rate:
             index1, index2 = random.sample(range(len(bee.path)), 2)
             bee.path[index1], bee.path[index2] = bee.path[index2], bee.path[index1]
         return bee    
 
     
-    def evolution(self):
+    def evolution(self, evolving_mutation=False):
         queen_distances = []
         mean_distances = []
 
@@ -141,7 +141,23 @@ class Evolution:
                     parent2 = self.selection()
 
                 child = self.crossover(parent1,parent2, generation + 1)    
-                child = self.mutate(child)
+
+                if evolving_mutation:
+                    initial_rate = 0.4
+                    final_rate = 0.01
+
+                    mutation_rate = initial_rate - (
+                        (initial_rate - final_rate)
+                        * generation
+                        / (NB_GENERATIONS - 1)
+                    )
+
+                    child = self.mutate(child, mutation_rate)
+
+                else:
+                    child = self.mutate(child, MUTATION_RATE)
+
+                
 
                 new_bees.append(child)
  
